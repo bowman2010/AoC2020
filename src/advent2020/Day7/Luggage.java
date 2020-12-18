@@ -21,6 +21,7 @@ class Luggage {
  *  populate content  map  using contentString
  */    
     public void resolveContent() {
+        
     }
     
 }
