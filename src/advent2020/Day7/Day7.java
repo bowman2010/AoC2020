@@ -22,15 +22,18 @@ public class Day7 extends AdventClass
     }
     
 
+    public Luggage getLuggage(String name) {
+        return luggages.get(name);
+    }
+    
     @Override
     public void run() {
         readData();
-    }
+    }   
     
-    
-    /**
-     *  read datafile and create each luggage
-     */
+/**
+ *  read datafile and create each luggage
+ */
     public void readData() {
         try {
             String fn = inputFname("day7_input_1.txt");
