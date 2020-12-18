@@ -22,21 +22,15 @@ public class Day7 extends AdventClass
     }
     
 
-    public Luggage getLuggage(String name) {
+    public static Luggage getLuggage(String name) {
         return luggages.get(name);
     }
-    
-    @Override
-    public void run() {
-        readData();
-    }   
-    
 /**
- *  read datafile and create each luggage
+ *  read data file and create each luggage
  */
     public void readData() {
         try {
-            String fn = inputFname("day7_input_1.txt");
+            String fn = inputFname("day7_input.txt");
              Scanner sc = new Scanner(new File(fn));
             String separator = " contain";
             while (sc.hasNextLine()) {
@@ -56,6 +50,26 @@ public class Day7 extends AdventClass
         }
     }
 
+    private static void resolve() {
+        luggages.forEach(
+                (K,V) -> V.resolveContent()
+        );
+    }
+
+    public void listing() {
+        luggages.forEach(
+                (K,V) -> V.dump()
+        );
+    }
+    
+    
+    @Override
+    public void run() {
+        readData();
+        resolve();
+        System.exit(0);
+    }   
+
 /**
  *  main method for testing
  * @param args 
@@ -64,5 +78,6 @@ public class Day7 extends AdventClass
         Day7 d7= new Day7();
         d7.run();
     }
+
 
 } // eof class
