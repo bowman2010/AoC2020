@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package advent2020.Day7;
 
 import java.util.HashMap;
@@ -15,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class Luggage {
     private String color;
-    private final HashMap<String,Integer> content;
+    private HashMap<String,Integer> content;
     boolean done;
 
     /**
@@ -70,5 +65,24 @@ public class Luggage {
         this.color = acolor;
         addContent(acontent);
     }
+    
+    /**
+     * recursive find and count
+     * @param color
+     * @return the number of luggages of the specified color
+     */
+    public int numberOf(String color) {
+        int count = 0;
+        if (color.compareTo(this.color)==0) return 1;   
+        for (String lugcolor:content.keySet()) {
+            int nb = content.get(lugcolor);
+            Luggage lug = Day7.getLuggage(lugcolor);
+            if (lug==null) {
+                System.err.println("["+this.color+"]  ---- Invalid color : "+lugcolor);
+                count+=nb * lug.numberOf(color);
+            }
+        } // eof for
+        return count;
+    } //eof numberOf
     
 } // eof class Luggage

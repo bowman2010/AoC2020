@@ -58,7 +58,7 @@ class Luggage {
             spl=spl.trim();
             Matcher m = pat.matcher(spl);
             if (m.matches()) {
-                int count = Integer.parseùInt(m.group(1));
+                int count = Integer.parseInt(m.group(1));
                 String color = m.group(2);
                 content.put(color, count);
             }

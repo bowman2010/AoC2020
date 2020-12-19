@@ -46,9 +46,9 @@ public class Day7 extends AdventClass
  *  read data file and create each luggage
  */
     public void readData() {
-        try {
+       try {
             String fn = inputFname("day7_input.txt");
-             Scanner sc = new Scanner(new File(fn));
+              Scanner sc = new Scanner(new File(fn));
             String separator = " contain";
             while (sc.hasNextLine()) {
                 String s = sc.nextLine();
