@@ -66,4 +66,8 @@ public class AdventClass {
         }
         return strs;
     }
+    
+    public static void dmpstr(String s) {
+        System.out.println("["+s+"] ( "+s.length()+")");
+    }
 }
