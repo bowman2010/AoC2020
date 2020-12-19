@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package advent2020.Day7;
+package advent2020.Day7old;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

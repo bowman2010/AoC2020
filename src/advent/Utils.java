@@ -8,6 +8,9 @@ package advent;
 
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  *
@@ -105,10 +108,7 @@ public class Utils {
       
       return sb1.toString()+'.'+sb2.toString();
     }
-    
-    
- 
-    
+       
     public static String strPad(String s, int width, char p) {
         int len = s.length();
         String ts1 = "";
@@ -129,23 +129,6 @@ public class Utils {
             System.out.print(c);
         System.out.println();
     }
-    
-    public static void clearScreen() {
-        for (int n=1;n<100;n++) {
-            System.out.println();
-        }
-    }
-    
-    public static void print(String s) {
-        System.out.print(s);
-    }
-    
-    public static void println(String s) {
-        System.out.println(s);
-    }
-    
-    public static void printError(String s) {
-        System.err.println(s);
-    }
-    
+   
+            
 }

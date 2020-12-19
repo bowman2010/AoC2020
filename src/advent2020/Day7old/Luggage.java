@@ -1,4 +1,4 @@
-package advent2020.Day7;
+package advent2020.Day7old;
 
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -11,7 +11,8 @@ import java.util.regex.Pattern;
 class Luggage {
     String selfcolor;
     String contentString;
-    HashMap<Luggage,Integer> content;
+    HashMap<String,Integer> content;
+    boolean checked = false;
     
     public Luggage(String selfcolor, String contentString) {
         this.selfcolor = selfcolor;
@@ -20,10 +21,30 @@ class Luggage {
     }
     
     public String color() {
-        return this.color();
+        return this.selfcolor;
     }
     
+    public boolean unCheck() {
+         this.checked = false;
+        return this.checked;
+    }
+    
+    public int contains(String col) {
+        int counter = 0;
+        
+        Day7.addTrace(this.selfcolor);
+        if (checked) return 0;
+        this.checked=true;
+        if (col.compareTo(this.selfcolor)==0) return 1;
 
+        for (String c:content.keySet()) {
+            Luggage lug = Day7.getLuggage(c);
+            int count = content.get(c);
+            counter+=count*lug.contains(col);
+        }
+        
+        return counter;
+    }
 /**
  *  populate content  map  using contentString
  */    
@@ -37,24 +58,11 @@ class Luggage {
             spl=spl.trim();
             Matcher m = pat.matcher(spl);
             if (m.matches()) {
-                int count = Integer.parseInt(m.group(1));
+                int count = Integer.parseùInt(m.group(1));
                 String color = m.group(2);
-                Luggage olu = Day7.getLuggage(spl);
-                content.put(olu, count);
+                content.put(color, count);
             }
         }                                                                                                                                                                         
     } // eof resolveContent
 
-    
-    public void dump() {
-        System.out.println("----------------------------------------------");
-        System.out.println("luggage "+this.selfcolor+" contains");
-        
-        content.forEach(
-                (K,V) -> System.out.printf("%d %s\n",V,K.color())
-        );
-        
-        
-        System.out.println("");
-    }
 }
